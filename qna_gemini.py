@@ -49,20 +49,6 @@ def get_vector_store(text_chunks, api_key):
     vector_store.save_local("faiss_index")
 
 
-def generate_response(prompt):
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
-        max_tokens=50,  # Adjust as needed
-        n = 1,  # Number of responses to generate
-        stop=["\n"]  # Stop when a newline character is encountered
-    )
-    return response.choices[0].text.strip()
-
-
-
-
-
 def get_conversational_chain():
     prompt_template = """
     Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
